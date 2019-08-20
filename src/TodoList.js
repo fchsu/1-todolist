@@ -1,6 +1,7 @@
 import React from 'react';
-import {AddTasks} from './AddTasks';
-import {TaskList} from './TaskList';
+import './TodoList.css';
+import {AddTasks} from './component/AddTasks';
+import {TaskList} from './component/TaskList';
 
 class Content extends React.Component {
     constructor(props) {
