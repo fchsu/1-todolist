@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {TodoList} from './TodoList';
+import {Wrap} from './Wrap';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<TodoList />, div);
+  ReactDOM.render(<Wrap />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

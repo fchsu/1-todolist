@@ -7,7 +7,9 @@ class AddTasks extends React.Component {
     }
     render() {
         return (
-            <div></div>
+            <div className="addTasks">
+
+            </div>
         );
     }
 }
