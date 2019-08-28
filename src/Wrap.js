@@ -1,23 +1,21 @@
 import React from 'react';
 import './Wrap.css';
-import {AddTasks} from './component/AddTasks';
-import {TodoList} from './component/TodoList';
+import {AddTasks} from './container/AddTasks';
+import {TodoList} from './container/TodoList';
 
 class Wrap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {task: {}};
-        this.AddNewTasks = this.AddNewTasks.bind(this);
+        this.handlerAddNewTask = this.handlerAddNewTask.bind(this);
     }
-    AddNewTasks(detail) {
-        this.setState((state) => {
-            state.task = detail;
-        });
+    handlerAddNewTask(task) {
+        this.setState({task: task});
     }
     render() {
         return (
             <div className="wrap">
-                <AddTasks onAddNewTasks={this.AddNewTasks} />
+                <AddTasks onAddNewTask={this.handlerAddNewTask} />
                 <TodoList addTask={this.state.task} />
             </div>
         );

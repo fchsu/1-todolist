@@ -44,7 +44,7 @@ class TodoList extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="todoList">
                 <Navbar table={this.state.table}
                     onHandleTabChange={this.HandleTabChange} />
                 <Content table={this.state.table} />

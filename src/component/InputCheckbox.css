@@ -1,0 +1,8 @@
+.inputCheckBox span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    margin-right: 16px;
+  }
