@@ -5,13 +5,11 @@ import { faEdit, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './AddTasks.css';
 import {InputCheckbox} from '../component/InputCheckbox';
 import {InputValue} from '../component/InputValue';
+import {AddTaskInput} from '../component/AddTaskInput';
 
 class TaskForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            title: ''
-        };
         this.handlerInputValue = this.handlerInputValue.bind(this);
         this.handlerAddTask = this.handlerAddTask.bind(this);
     }
@@ -20,9 +18,6 @@ class TaskForm extends React.Component {
     }
     handlerAddTask() {
         this.props.onAddNewTask(this.state);
-        this.setState({
-            title: ''
-        });
     }
     render() {
         return (
@@ -30,10 +25,9 @@ class TaskForm extends React.Component {
                 <div>
                     <div className="addTaskTitle">
                         <InputCheckbox />
-                        <InputValue inputType="text"
-                                    inputPlaceholder="Type Something Here…"
-                                    inputClass="inputTitle"
-                                    inputValue={this.state.title}
+                        <InputValue propsType="text"
+                                    propsPlaceholder="Type Something Here…"
+                                    propsClass="inputTitle"
                                     onInputValue={this.handlerInputValue} />
                         <FontAwesomeIcon icon={faStar} />
                         <FontAwesomeIcon icon={faEdit} />
@@ -67,21 +61,31 @@ class TaskForm extends React.Component {
 class AddTasks extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {focusInput: false};
-        this.handlerInputFocus = this.handlerInputFocus.bind(this);
+        this.state = {
+            clickInput: 0,
+        };
+        this.handlerInputClick = this.handlerInputClick.bind(this);
         this.handlerAddNewTask = this.handlerAddNewTask.bind(this);
     }
-    handlerInputFocus() {
-        this.setState({focusInput: true});
+    handlerInputClick() {
+        this.setState({clickInput: 1});
     }
     handlerAddNewTask(task) {
         this.props.onAddNewTask(task);
+        this.setState({
+            clickInput: 0,
+        })
     }
     render() {
+        const addTask = [];
+        addTask.push(<AddTaskInput propsType="text"
+                                    propsPlaceholder="+ Add Task"
+                                    propsClass="taskInput"
+                                    onClickInput={this.handlerInputClick} />);
+        addTask.push(<TaskForm onAddNewTask={this.handlerAddNewTask} />);
         return (
-            <div>
-                <input className="taskInput" onFocus={this.handlerInputFocus} placeholder="+ Add Task" />
-                <TaskForm onAddNewTask={this.handlerAddNewTask} />
+            <div className="w-100">
+                {addTask[this.state.clickInput]}
             </div>
         );
     }

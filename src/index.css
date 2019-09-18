@@ -10,8 +10,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #000;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.w-100 {
+  width: 100%;
 }

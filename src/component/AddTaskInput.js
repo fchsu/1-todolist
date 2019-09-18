@@ -1,32 +1,30 @@
 import React from 'react';
-import './InputValue.css';
+import './AddTaskInput.css';
 
-class InputValue extends React.Component {
+class AddTaskInput extends React.Component {
     constructor(props) {
         /** 
          * props.propsType:        <input /> type
          * props.propsPlaceholder: <input /> placeholder
          * props.propsClass:       <input /> class
-         * props.propsValue:       <input /> value
-         * props.onInputValue():     修改上層 state
+         * props.onClickInput():     修改上層 state
         */
         super(props);
-        this.handlerChange = this.handlerChange.bind(this);
+        this.handlerClick = this.handlerClick.bind(this);
     }
-    handlerChange(e) {
-        const title = e.target.value;
-        this.props.onInputValue(title);
+    handlerClick() {
+        this.props.onClickInput();
     }
     render() {
         return (
-            <div>
+            <div className="w-100">
                 <input type={this.props.propsType}
                         placeholder={this.props.propsPlaceholder}
                         className={this.props.propsClass}
-                        onChange={this.handlerChange} />
+                        onClick={this.handlerClick} />
             </div>
         );
     }
 }
 
-export {InputValue};
+export {AddTaskInput};
